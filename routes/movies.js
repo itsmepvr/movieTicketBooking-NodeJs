@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 	movies = [];
 	Movies.find({}, function(err, movie){
         movies = movie;
-	});
+    });
     User.findOne({unique_id:req.session.userId},function(err,data){
 		if(!data){
 			return res.render('movies', {"name":null, "title": "Book My Show", "movies": movies});

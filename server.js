@@ -1,3 +1,5 @@
+
+require('./config');
 var express = require('express');
 var router = express.Router();
 var ejs = require('ejs');
@@ -7,6 +9,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+
+const port = process.env.PORT;
 
 mongoose.connect('mongodb://localhost:27017/bookMyShow', { useNewUrlParser: true }, (err, client)=>{
   if(!err){
@@ -127,9 +131,8 @@ app.use(function (err, req, res, next) {
 });
 
 
-// listen on port 3000
-app.listen(3000, function () {
-  console.log('Express app listening on port 3000');
+app.listen(port, () => {
+  console.log(`Started on port ${port}`);
 });
 
-module.exports = app;
+module.exports = {app};
