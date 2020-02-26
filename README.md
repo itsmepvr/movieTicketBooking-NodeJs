@@ -10,7 +10,7 @@ Request URI: http://localhost:9090/movies
 
 Request body (example):
 
-`{ "movieName":"1917", "nested": [{ "hallName": "GVK Mall", "showTimings": ["10:30", "9:30"], "availableSeats": [[1, 2], [1, 2, 3, 4]]}, { "hallName": "PVR Mall", "showTimings": ["11:30", "5:30"], "availableSeats": [[1], [1, 2, 3, 4]]} }`
+```{ "movieName":"1917", "nested": [{ "hallName": "GVK Mall", "showTimings": ["10:30", "9:30"], "availableSeats": [[1, 2], [1, 2, 3, 4]]}, { "hallName": "PVR Mall", "showTimings": ["11:30", "5:30"], "availableSeats": [[1], [1, 2, 3, 4]]} }```
 
 
 **2. API to reserve tickets for given seats in a given screen for a movie**
@@ -21,7 +21,7 @@ Request URI: http://localhost:9090/movies/movieName/hallName/showTimings/seatNo
 
 Request body (example):
 
-`{ "movieName":"1917", "hallName": "GVK Mall", "showTimings": "10:30", "seatNo": "2" }`
+```{ "movieName":"1917", "hallName": "GVK Mall", "showTimings": "10:30", "seatNo": "2" }```
 
 
 **3. API to get the available seats for a given movie in a screen**
@@ -32,5 +32,9 @@ Request URI: http://localhost:9090/movies/movieName/hallName/
 
 Response body (example):
 
-`{ "movieName":"1917", "hallName": "GVK Mall"}`
-`{ availableSeats: [1, 2] }`
+```{ "movieName":"1917", "hallName": "GVK Mall"}```
+```{ availableSeats: [1, 2] }```
+
+## Authors
+
+* **Venkata Ramana P** - [itsmepvr](https://itsmepvr.github.io)
