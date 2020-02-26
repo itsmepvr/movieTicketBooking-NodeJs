@@ -45,11 +45,74 @@ var signup = require('./routes/signup');
 var profile = require('./routes/profile');
 var forgotpass = require('./routes/forgotpass');
 var signin = require('./routes/signin');
+var movies = require('./routes/movies');
 app.use('/', index);
 app.use('/signup', signup);
 app.use('/profile', profile);
 app.use('/forgetpass', forgotpass);
 app.use('/signin', signin);
+app.use('/movies', movies);
+var movieModel = require('./models/movies');
+
+//API to post details of movie
+router.post('/movies', async (req, res) => {
+  try {
+    let screen = new movieModel(req.body);
+    await screen.save();
+    res.send();
+  } catch (e) {
+      res.status(400).send(e);
+  }
+});
+
+//API to get the show timings and avaiable seats in a given screen
+router.get('/movies/:movieName/hallName', async (req, res) => {
+  let seat = [];
+  try {
+    movieModel.findOne({movieName: req.params.movieName}, function(err, obj){
+      if(!err){
+        seat = obj.nested;
+        for(var i=0;i<seat.length;i++){
+          if(seat['hallName'] == req.params.hallName){
+            res.send(`Movie: `+req.params.movieName+`
+              hallName: `+req.params.hallName+`
+              Show Timings: `+seat['showTimings']+`
+              Available Seats: `+seat['availableSeats']+`
+            `);
+          }
+        }
+      }
+    })
+  } catch (e) {
+      res.status(400).send(e);
+  }
+});
+
+//API to reserve tickets for given seats in a given screen
+router.post('/movies/:movieName/hallName/seat', async (req, res) => {
+  let seat = [];
+  try {
+    movieModel.findOne({movieName: req.params.movieName}, function(err, obj){
+      if(!err){
+        seat = obj.nested;
+        for(var i=0;i<seat.length;i++){
+          if(seat['hallName'] == req.params.hallName){
+            seat = seat['availableSeats'];
+          }
+        }
+      }
+    })
+    movieModel.update({movieName: req.params.movieName}, {availableSeats: seats});
+    res.send(`Movie: `+req.params.movieName+`
+              hallName: `+req.params.hallName+`
+              Seat No: `+req.params.seat+`
+              Ticket Booked.
+    `);
+  } catch (e) {
+      res.status(400).send(e);
+  }
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('File Not Found');

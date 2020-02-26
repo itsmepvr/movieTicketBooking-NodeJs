@@ -10,12 +10,13 @@ router.get('/', function (req, res, next) {
 	});
     User.findOne({unique_id:req.session.userId},function(err,data){
 		if(!data){
-			return res.render('index', {"name":null, "title": "Book My Show", "movies": movies});
+			return res.render('movies', {"name":null, "title": "Book My Show", "movies": movies});
 		}else{
 			//console.log("found");
-			return res.render('index', {"name":data.username, "title": "Book My Show", "movies": movies});
+			return res.render('movies', {"name":data.username, "title": "Book My Show", "movies": movies});
 		}
 	});
 });
+
 
 module.exports = router;

@@ -42,11 +42,14 @@
       </nav>
 
       <section>
-          <ul class='list-group'>
-              <% for(var i=0;i< movies.length;i++) { %>
-            <li class='list-group-item'><a class='btn btn-sm btn-danger'><%= movies[i].movieName %></a></li>
-            <% } %>
-          </ul>
+          <strong>Movies:</strong>
+          <form action="" method="post">
+            <ul class='list-group'>
+                <% for(var i=0;i< movies.length;i++) { %>
+              <li class='list-group-item'><a class='btn btn-sm btn-danger' href='/movies/<%= movies[i].id %>'><%= movies[i].movieName %></a></li>
+              <% } %>
+            </ul>
+          </form>
       </section>
 </div>
 </body>
