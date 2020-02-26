@@ -1,20 +1,21 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-hallSchema = new Schema({
+let hallSchema = new Schema({
     hallName: {
         type: String
     },
     showTimings: {
-        type: String
+        type: String,
+        default: []
     },
     availableSeats: {
-        type: String,
+        type: [Number],
         default: []
     }
 });
 
-movieSchema = new Schema( {
+let movieSchema = new Schema( {
 	unique_id: Number,
 	movieName:{
         type: String,
@@ -22,7 +23,8 @@ movieSchema = new Schema( {
     },
     cinemaHall: {
         type: Map,
-        of: hallSchema
+        of: hallSchema,
+        required: true
     }
 });
 

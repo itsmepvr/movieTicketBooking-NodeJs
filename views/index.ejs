@@ -42,7 +42,12 @@
       </nav>
 
       <section>
-          
+            <h2>Movies</h2>
+            <ul class='list-group'>
+              <% for (var i =0; i < movies.length;  i++ ) { %>
+                <li class='list-group-item'><%= movies[i] %></li>
+              <% } %>
+            </ul>
       </section>
 </div>
 </body>
