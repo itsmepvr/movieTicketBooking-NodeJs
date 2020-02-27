@@ -1,5 +1,5 @@
 {
-  "name": "node.js-register-login-app",
+  "name": "node.js-restAPI",
   "version": "1.0.0",
   "description": "This is a user login and registration app using Node.js, Express, Mongoose and express-sessions. :+1:",
   "main": "server.js",
@@ -13,16 +13,16 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FSojitra/Node.js-Register-Login-App.git"
+    "url": "git+https://github.com/itsmepvr/movieTicketBooking-NodeJs.git"
   },
   "author": "foram sojitra",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FSojitra/Node.js-Register-Login-App/issues"
+    "url": "https://github.com/itsmepvr/movieTicketBooking-NodeJs/issues"
   },
-  "homepage": "https://github.com/FSojitra/Node.js-Register-Login-App#readme"
+  "homepage": "https://github.com/itsmepvr/movieTicketBooking-NodeJs#readme"
 }
